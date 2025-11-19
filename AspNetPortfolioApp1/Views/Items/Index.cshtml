@@ -13,6 +13,7 @@
             <th>Serial Number</th>
             <th>Category</th>
             <th>Price</th>
+            <th>Clients</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -24,6 +25,15 @@
                 <td>@item.SerialNumber?.Number</td>
                 <td>@item.Category?.Name</td>
                 <td>@item.Price.ToString("N2") $</td>
+                <td>
+                    @if (item.ItemClients != null)
+                    {
+                        foreach(var ic in item.ItemClients)
+                        {
+                            <div>@ic.Client.Name</div>
+                        }
+                    }
+                </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>

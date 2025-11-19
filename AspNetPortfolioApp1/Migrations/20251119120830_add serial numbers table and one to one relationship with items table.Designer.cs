@@ -3,6 +3,7 @@ using AspNetPortfolioApp1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetPortfolioApp1.Migrations
 {
     [DbContext(typeof(PortfolioApp1Context))]
-    partial class PortfolioApp1ContextModelSnapshot : ModelSnapshot
+    [Migration("20251119120830_add serial numbers table and one to one relationship with items table")]
+    partial class addserialnumberstableandonetoonerelationshipwithitemstable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

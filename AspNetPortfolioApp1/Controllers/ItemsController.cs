@@ -24,7 +24,7 @@ public class ItemsController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var items = await _context.Items.ToListAsync();
+        var items = await _context.Items.Include(s => s.SerialNumber).ToListAsync();
         return View(items);
     }
 

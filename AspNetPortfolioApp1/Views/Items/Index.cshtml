@@ -10,6 +10,7 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Serial Number</th>
             <th>Price</th>
             <th>Actions</th>
         </tr>
@@ -19,6 +20,7 @@
         {
             <tr>
                 <td>@item.Name</td>
+                <td>@item.SerialNumber?.Number</td>
                 <td>@item.Price.ToString("N2") $</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>

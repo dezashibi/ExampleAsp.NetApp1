@@ -1,6 +1,13 @@
 @model Item
 
 @{
+    var items = new List<string> {"Item1", "Item2", "Item3"};
 }
 
 <p>Item name: @Model.Name (Id: @Model.Id)</p>
+<ul>
+    @foreach(var item in items)
+    {
+        <li>@item</li>
+    }
+</ul>

@@ -1,4 +1,6 @@
-﻿namespace AspNetPortfolioApp1.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AspNetPortfolioApp1.Models;
 
 public class Item
 {
@@ -8,4 +10,9 @@ public class Item
 
     public int? SerialNumberId { get; set; }
     public SerialNumber? SerialNumber { get; set; }
+
+    public int? CategoryId { get; set; }
+
+    [ForeignKey(nameof(CategoryId))]
+    public Category? Category { get; set; }
 }

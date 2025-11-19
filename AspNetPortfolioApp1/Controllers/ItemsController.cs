@@ -40,14 +40,66 @@ public class ItemsController : Controller
         {
             _context.Items.Add(item);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
         return View(item);
     }
 
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id)
     {
-        return Content($"id = {id}");
+        var item = await _context.Items.FirstOrDefaultAsync(x => x.Id == id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+
+        return View(item);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Price")] Item item)
+    {
+        if (id != item.Id)
+        {
+            return BadRequest();
+        }
+
+        if (ModelState.IsValid)
+        {
+            _context.Items.Update(item);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(item);
+    }
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        var item = await _context.Items.FirstOrDefaultAsync(x => x.Id == id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+
+        return View(item);
+    }
+
+    [HttpPost, ActionName(nameof(Delete))]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var item = await _context.Items.FirstOrDefaultAsync(x => x.Id == id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+
+        _context.Items.Remove(item);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
     }
 }

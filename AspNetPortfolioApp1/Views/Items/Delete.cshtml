@@ -1,0 +1,16 @@
+﻿@model AspNetPortfolioApp1.Models.Item
+
+@{
+    ViewData["Title"] = "Delete an Item";
+}
+
+<h3>Proceed to delete "@Model.Name"?</h3>
+
+<p>Name: @Model.Name</p>
+<p>Price: @Model.Price.ToString("N2") $</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

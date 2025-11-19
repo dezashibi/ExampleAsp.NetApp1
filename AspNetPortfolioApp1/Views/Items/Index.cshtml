@@ -4,13 +4,14 @@
     ViewData["Title"] = "List of Items";
 }
 
-<h3>Index Page</h3>
+<h3>Index Page <a class="btn btn-secondary" asp-action="Create">Create new Item</a></h3>
 
 <table class="table">
     <thead>
         <tr>
             <th>Name</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -19,10 +20,10 @@
             <tr>
                 <td>@item.Name</td>
                 <td>@item.Price.ToString("N2") $</td>
-                @* <td>
+                <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td> *@
+                </td>
             </tr>
         }
     </tbody>
